@@ -36,6 +36,21 @@ Or use the minimized versions.
 <script src="/js/backbone.iobind.min.js"></script>
 ```
 
+With CommonJS via browserify or webpack:
+
+```javascript
+var Backbone = require('backbone'),
+    iobind = require('backbone.iobind');
+
+iobind.bind();
+iobind.sync();
+```
+
+When using Backbone.ioBind via npm, you also need to additionally install
+the `backbone` and `underscore` packages. Installing `jquery` is optional,
+but an ES2015 Promise function must exist on the global scope to use
+the `Backbone.sync` replacement without jQuery.
+
 ### Where to Get Help
 
 Please post issues to [GitHub Issues](https://github.com/logicalparadox/backbone.iobind/issues).

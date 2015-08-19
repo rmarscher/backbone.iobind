@@ -72,3 +72,21 @@ iosyncmin.compile(function (err, source) {
   fs.writeFileSync(path.join(__dirname, '..', 'dist', 'backbone.iosync.min.js'), copyright + '\n' + source);
   console.log('Build successful: '.green + '\tdist/backbone.iosync.min.js'.blue);
 });
+
+var main = new Glossary([
+  path.join(__dirname, '..', 'lib', 'main-bind.js'),
+  path.join(__dirname, '..', 'lib', 'model.js'),
+  path.join(__dirname, '..', 'lib', 'collection.js'),
+  path.join(__dirname, '..', 'lib', 'main-sync.js'),
+  path.join(__dirname, '..', 'lib', 'sync.js'),
+  path.join(__dirname, '..', 'lib', 'main-return.js')
+], {
+  prefix: fs.readFileSync(path.join(__dirname, '..', 'lib', 'prefix.js'), 'utf8')
+});
+
+main.compile(function (err, source) {
+  source = source.replace(/@VERSION/g, version);
+  fs.writeFileSync(path.join(__dirname, '..', 'dist', 'main.js'), source);
+  console.log('Build successful: '.green + '\tdist/main.js'.blue);
+});
+
